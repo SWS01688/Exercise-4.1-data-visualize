@@ -1,88 +1,367 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>House and Garden</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House and Garden — Exercise 4.1</title>
+
     <style>
-      body {
-        margin: 0;
-        display: grid;
-        place-items: center;
-        background: #dfefff;
-        font-family: Arial, sans-serif;
-      }
+        body {
+            margin: 0;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #dfefff;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
 
-      svg {
-        background: #dfefff;
-      }
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+        .house-container {
+            width: 100%;
+            max-width: 1000px;
+            overflow: hidden;
+        }
+
+        .house-container svg {
+            display: block;
+            width: 100%;
+            height: auto;
+            background: #dfefff;
+        }
+
+        .documentation {
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 40px;
+        }
+
+        .documentation section {
+            margin-bottom: 36px;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #c4d5e8;
+            border-radius: 10px;
+        }
+
+        .documentation img {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            margin: 16px auto;
+            border: 1px solid #c4d5e8;
+            border-radius: 6px;
+        }
+
+        .documentation p {
+            line-height: 1.6;
+        }
     </style>
-  </head>
-  <body>
-    <svg width="1000" height="1000" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-      <!-- Sky background -->
-      <rect x="0" y="0" width="1000" height="1000" fill="#cfe8ff" stroke="#87b6e8" stroke-width="2"/>
+</head>
 
-      <!-- Sun -->
-      <circle cx="820" cy="150" r="60" fill="#ffd966" stroke="#f4b942" stroke-width="5"/>
+<body>
+    <h1>House and Garden</h1>
 
-      <!-- Clouds -->
-      <g>
-        <ellipse cx="200" cy="180" rx="90" ry="35" fill="#f5f9ff" stroke="#b9d2f4" stroke-width="3"/>
-        <ellipse cx="270" cy="170" rx="65" ry="30" fill="#f5f9ff" stroke="#b9d2f4" stroke-width="3"/>
-        <ellipse cx="130" cy="170" rx="60" ry="28" fill="#f5f9ff" stroke="#b9d2f4" stroke-width="3"/>
-      </g>
+    <!-- Main SVG drawing -->
+    <div class="house-container">
+        <svg
+            width="1000"
+            height="1000"
+            viewBox="0 0 1000 1000"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="A house surrounded by a garden, trees, clouds and the sun"
+        >
+            <!-- Sky background -->
+            <rect
+                x="0" y="0"
+                width="1000" height="1000"
+                fill="#cfe8ff"
+                stroke="#87b6e8"
+                stroke-width="2"
+            />
 
-      <!-- Grass -->
-      <rect x="0" y="700" width="1000" height="300" fill="#8ecf6b" stroke="#5fa14e" stroke-width="4"/>
+            <!-- Sun: circle -->
+            <circle
+                cx="820" cy="150" r="60"
+                fill="#ffd966"
+                stroke="#f4b942"
+                stroke-width="5"
+            />
 
-      <!-- Garden path / curved walkway -->
-      <path d="M 510 1000 Q 610 820 700 700 L 760 1000 Z" fill="#d9c28a" stroke="#b38d4d" stroke-width="4"/>
+            <!-- Clouds: ellipses grouped together -->
+            <g id="clouds">
+                <ellipse
+                    cx="200" cy="180"
+                    rx="90" ry="35"
+                    fill="#f5f9ff"
+                    stroke="#b9d2f4"
+                    stroke-width="3"
+                />
+                <ellipse
+                    cx="270" cy="170"
+                    rx="65" ry="30"
+                    fill="#f5f9ff"
+                    stroke="#b9d2f4"
+                    stroke-width="3"
+                />
+                <ellipse
+                    cx="130" cy="170"
+                    rx="60" ry="28"
+                    fill="#f5f9ff"
+                    stroke="#b9d2f4"
+                    stroke-width="3"
+                />
+            </g>
 
-      <!-- House body -->
-      <rect x="260" y="420" width="480" height="280" fill="#f8d7a5" stroke="#7a4b2f" stroke-width="6"/>
+            <!-- Grass: rectangle -->
+            <rect
+                x="0" y="700"
+                width="1000" height="300"
+                fill="#8ecf6b"
+                stroke="#5fa14e"
+                stroke-width="4"
+            />
 
-      <!-- Roof -->
-      <polygon points="220,420 500,250 780,420" fill="#a64b35" stroke="#5c2b2b" stroke-width="7"/>
+            <!-- Garden walkway: path with straight and curved segments -->
+            <path
+                d="M 445 700
+                   L 555 700
+                   Q 600 850 680 1000
+                   L 520 1000
+                   Q 470 850 445 700
+                   Z"
+                fill="#d9c28a"
+                stroke="#b38d4d"
+                stroke-width="4"
+            />
 
-      <!-- Windows -->
-      <rect x="315" y="470" width="120" height="100" fill="#bfe9ff" stroke="#3f5a7a" stroke-width="5"/>
-      <line x1="375" y1="470" x2="375" y2="570" stroke="#3f5a7a" stroke-width="5"/>
-      <line x1="315" y1="520" x2="435" y2="520" stroke="#3f5a7a" stroke-width="5"/>
+            <!-- House body: rectangle -->
+            <rect
+                x="260" y="420"
+                width="480" height="280"
+                fill="#f8d7a5"
+                stroke="#7a4b2f"
+                stroke-width="6"
+            />
 
-      <rect x="565" y="470" width="120" height="100" fill="#bfe9ff" stroke="#3f5a7a" stroke-width="5"/>
-      <line x1="625" y1="470" x2="625" y2="570" stroke="#3f5a7a" stroke-width="5"/>
-      <line x1="565" y1="520" x2="685" y2="520" stroke="#3f5a7a" stroke-width="5"/>
+            <!-- Roof: polygon -->
+            <polygon
+                points="220,420 500,250 780,420"
+                fill="#a64b35"
+                stroke="#5c2b2b"
+                stroke-width="7"
+            />
 
-      <!-- Door -->
-      <rect x="445" y="540" width="110" height="160" fill="#8b5e3c" stroke="#5b3828" stroke-width="6"/>
-      <circle cx="530" cy="620" r="7" fill="#f5d36e" stroke="#8a6a18" stroke-width="2"/>
+            <!-- Windows: shared group styling -->
+            <g
+                id="windows"
+                stroke="#3f5a7a"
+                stroke-width="5"
+            >
+                <!-- Left window -->
+                <g
+                    id="left-window"
+                    transform="translate(315 470)"
+                >
+                    <rect
+                        x="0" y="0"
+                        width="120" height="100"
+                        fill="#bfe9ff"
+                    />
+                    <line
+                        x1="60" y1="0"
+                        x2="60" y2="100"
+                    />
+                    <line
+                        x1="0" y1="50"
+                        x2="120" y2="50"
+                    />
+                </g>
 
-      <!-- Tree group with transform -->
-      <g transform="translate(110 0)">
-        <!-- Tree trunk -->
-        <rect x="90" y="430" width="40" height="180" fill="#7a4b2d" stroke="#4d2e1b" stroke-width="4"/>
-        <!-- Tree leaves -->
-        <circle cx="110" cy="380" r="55" fill="#4caf50" stroke="#2e7d32" stroke-width="5"/>
-        <circle cx="150" cy="410" r="50" fill="#4caf50" stroke="#2e7d32" stroke-width="5"/>
-        <circle cx="70" cy="410" r="48" fill="#4caf50" stroke="#2e7d32" stroke-width="5"/>
-      </g>
+                <!-- Right window -->
+                <g
+                    id="right-window"
+                    transform="translate(565 470)"
+                >
+                    <rect
+                        x="0" y="0"
+                        width="120" height="100"
+                        fill="#bfe9ff"
+                    />
+                    <line
+                        x1="60" y1="0"
+                        x2="60" y2="100"
+                    />
+                    <line
+                        x1="0" y1="50"
+                        x2="120" y2="50"
+                    />
+                </g>
+            </g>
 
-      <!-- Second small tree -->
-      <g transform="translate(710 15)">
-        <rect x="90" y="500" width="28" height="120" fill="#7a4b2d" stroke="#4d2e1b" stroke-width="4"/>
-        <circle cx="104" cy="470" r="40" fill="#66bb6a" stroke="#2e7d32" stroke-width="4"/>
-      </g>
+            <!-- Door: rectangle and circle doorknob -->
+            <rect
+                x="445" y="540"
+                width="110" height="160"
+                fill="#8b5e3c"
+                stroke="#5b3828"
+                stroke-width="6"
+            />
 
-      <!-- Fence line -->
-      <line x1="50" y1="760" x2="950" y2="760" stroke="#d3c7aa" stroke-width="5"/>
-      <line x1="80" y1="780" x2="930" y2="780" stroke="#d3c7aa" stroke-width="4"/>
+            <circle
+                cx="530" cy="620" r="7"
+                fill="#f5d36e"
+                stroke="#8a6a18"
+                stroke-width="2"
+            />
 
-      <!-- Garden bush ellipse -->
-      <ellipse cx="760" cy="770" rx="120" ry="45" fill="#73b86d" stroke="#448b45" stroke-width="4"/>
+            <!-- Large tree: grouped shapes with translation -->
+            <g id="large-tree" transform="translate(-20 90)">
+                <!-- Trunk -->
+                <rect
+                    x="90" y="430"
+                    width="40" height="180"
+                    fill="#7a4b2d"
+                    stroke="#4d2e1b"
+                    stroke-width="4"
+                />
 
-      <!-- House label -->
-      <text x="470" y="350" font-size="42" font-weight="bold" fill="#3b2d24" text-anchor="middle">House</text>
-    </svg>
-  </body>
+                <!-- Leaves -->
+                <circle
+                    cx="110" cy="380" r="55"
+                    fill="#4caf50"
+                    stroke="#2e7d32"
+                    stroke-width="5"
+                />
+
+                <circle
+                    cx="150" cy="410" r="50"
+                    fill="#4caf50"
+                    stroke="#2e7d32"
+                    stroke-width="5"
+                />
+
+                <circle
+                    cx="70" cy="410" r="48"
+                    fill="#4caf50"
+                    stroke="#2e7d32"
+                    stroke-width="5"
+                />
+            </g>
+
+            <!-- Small tree: grouped shapes with translation -->
+            <g id="small-tree" transform="translate(710 80)">
+                <rect
+                    x="90" y="500"
+                    width="28" height="120"
+                    fill="#7a4b2d"
+                    stroke="#4d2e1b"
+                    stroke-width="4"
+                />
+
+                <circle
+                    cx="104" cy="470" r="40"
+                    fill="#66bb6a"
+                    stroke="#2e7d32"
+                    stroke-width="4"
+                />
+            </g>
+
+            <!-- Garden fence: lines -->
+            <g id="fence">
+                <line
+                    x1="50" y1="760"
+                    x2="950" y2="760"
+                    stroke="#d3c7aa"
+                    stroke-width="5"
+                />
+
+                <line
+                    x1="80" y1="780"
+                    x2="930" y2="780"
+                    stroke="#d3c7aa"
+                    stroke-width="4"
+                />
+            </g>
+
+            <!-- Garden bush: ellipse -->
+            <ellipse
+                cx="760" cy="770"
+                rx="120" ry="45"
+                fill="#73b86d"
+                stroke="#448b45"
+                stroke-width="4"
+            />
+
+            <!-- House label: text -->
+            <text
+                x="500" y="350"
+                font-size="42"
+                font-weight="bold"
+                fill="#3b2d24"
+                text-anchor="middle"
+            >House</text>
+        </svg>
+    </div>
+
+    <!-- Exercise 4.1 documentation and screenshots -->
+    <div class="documentation">
+        <h2>Exercise 4.1 — SVG Documentation</h2>
+
+        <!-- Original drawing screenshot -->
+        <section>
+            <h2>1. House and Garden SVG</h2>
+            <p>
+                This screenshot shows the original house and garden drawing
+                created using SVG elements.
+            </p>
+
+            <img
+                src="image/house-garden.png"
+                alt="Screenshot of the original house and garden drawing"
+            >
+        </section>
+
+        <!-- Annotated coordinates screenshot -->
+        <section>
+            <h2>2. Annotating the SVG Coordinate System</h2>
+            <p>
+                The annotated image identifies examples of SVG shapes and
+                explains how their coordinates correspond to the drawing.
+                The SVG origin is at the top-left corner. The x-coordinate
+                increases to the right, while the y-coordinate increases
+                downward.
+            </p>
+
+            <img
+                src="image/house_svg_coordinate_annotated.png"
+                alt="Annotated house and garden drawing showing SVG coordinates"
+            >
+        </section>
+
+        <!-- Developer Tools screenshot -->
+        <section>
+            <h2>3. SVG Structure in Developer Tools</h2>
+            <p>
+                This screenshot shows the SVG elements in the browser's
+                Developer Tools, including the structure of the SVG
+                container and its child elements.
+            </p>
+
+            <img
+                src="image/svg-dom.png"
+                alt="Browser Developer Tools showing the SVG document structure"
+            >
+        </section>
+    </div>
+</body>
 </html>
+```
